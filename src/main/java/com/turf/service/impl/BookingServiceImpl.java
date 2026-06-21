@@ -73,15 +73,25 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking cancelBooking(Long id) {
         Booking booking = bookingRepository.findById(id).orElse(null);
-        if (booking != null) {
-            booking.setStatus("CANCELLED");
-            return bookingRepository.save(booking);
-        }
-        return null;
-    }
 
+        if (booking == null) {
+            throw new RuntimeException("Booking not found");
+        }
+
+        if ("CANCELLED".equals(booking.getStatus())) {
+            throw new RuntimeException("Already cancelled");
+        }
+
+        booking.setStatus("CANCELLED");
+        return bookingRepository.save(booking);
+    }
     @Override
     public void deleteBooking(Long id) {
         bookingRepository.deleteById(id);
+    }
+    
+    @Override
+    public List<Booking> getBookingsByUser(Long userId) {
+        return bookingRepository.findByUserId(userId);
     }
 }

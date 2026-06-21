@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">TurfBook</div>
+
+    <div>
+        <a href="booking.html">Book Slot</a>
+        <a href="my-bookings.html">My Bookings</a>
+        <a href="index.html">Home</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <h2>My Booking History</h2>
+    <p>View your upcoming, completed and cancelled bookings.</p>
+
+    <br>
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <h3 id="totalBookings">0</h3>
+            <p>Total Bookings</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="upcomingBookings">0</h3>
+            <p>Upcoming</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="completedBookings">0</h3>
+            <p>Completed</p>
+        </div>
+
+    </div>
+
+    <div id="bookings"></div>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/my-bookings.js"></script>
+
+<script>
+    loadMyBookings();
+</script>
+
+</body>
+</html>
